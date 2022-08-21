@@ -1,20 +1,15 @@
 const { Api, JsonRpc } = require('eosjs')
 const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig')
-const fetch = require('node-fetch')
+const { fetch } = require('node-fetch')
 const { TextEncoder, TextDecoder } = require('util')
 const EosApi = require('eosjs-api')
 
 const { eosConfig } = require('./../config')
 
-const privateKeys = [eosConfig.pvtKey]
-const signatureProvider = new JsSignatureProvider(privateKeys);
-
 const textEncoder = new TextEncoder()
 const textDecoder = new TextDecoder()
 
 const rpc = new JsonRpc(eosConfig.endpoint, { fetch })
-
-const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() })
 
 const eosApi = EosApi({
   httpEndpoint: eosConfig.endpoint,
@@ -34,7 +29,7 @@ const getAccount = async account => {
 const getCurrencyBalance = (code, account, symbol) =>
   eosApi.getCurrencyBalance(code, account, symbol)
 
-const transact = async (actions) => {
+const transact = async actions => {
   try {
     const keys = [eosConfig.pvtKey]
 
