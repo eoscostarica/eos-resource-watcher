@@ -1,0 +1,17 @@
+{
+  "name": "eosresourcewatcher",
+  "version": "1.0.0",
+  "description": "EOS Contract Resource Watcher and Power-Up",
+  "repository": "https://github.com/eoscostarica/eos-resource-watcher.git",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "powerup": "node src/index.js",
+    "lint": "lint-staged"
+  },
+  "dependencies": {
+    "eosjs": "^22.1.0",
+    "eosjs-api": "^7.0.4",
+    "node-fetch": "^2.6.1"
+  }
+}
