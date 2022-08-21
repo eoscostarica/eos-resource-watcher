@@ -1,4 +1,4 @@
-name: Create Realease Notes
+name: Publish Docker Images and Create Realease Notes
 
 on:
   push:
