@@ -24,13 +24,20 @@ async function init() {
 
       const accountStats = await eosUtil.getAccount(account)
       const existingCPU = Number(accountStats.cpu_limit.available)
+      const usedCPU = Number(accountStats.cpu_limit.used)
       console.log('Existing CPU:', existingCPU)
+      console.log('Used CPU:', usedCPU)
       const existingNET = Number(accountStats.net_limit.available)
+      const usedNET = Number(accountStats.net_limit.used)
       console.log('Existing NET:', existingNET)
+      console.log('Used NET:', usedNET)
 
-      if (existingCPU > eosConfig.threshold) continue
+      if ((usedCPU/existingCPU) < eosConfig.threshold) continue
 
       console.log('Available CPU is below threshhold of: ', eosConfig.threshold)
+      console.log('Power Up Ammount: ', eosConfig.powerUpAmount + ' EOS')
+      console.log('Net_frac: ', eosConfig.net)
+      console.log('CPU_frac: ', eosConfig.cpu)
 
       const transact = await eosUtil
         .transact([
@@ -42,9 +49,9 @@ async function init() {
               payer,
               receiver: account,
               days: 1,
-              net_frac: 1000,
-              cpu_frac: 25000,
-              max_payment: eosConfig.powerUpAmount + '.0000 EOS'
+              net_frac: eosConfig.net,
+              cpu_frac: eosConfig.cpu,
+              max_payment: eosConfig.powerUpAmount + ' EOS'
             }
           }
         ])
