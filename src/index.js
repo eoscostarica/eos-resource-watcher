@@ -31,12 +31,13 @@ async function init() {
       const usedNET = Number(accountStats.net_limit.used)
       console.log('Existing NET:', existingNET)
       console.log('Used NET:', usedNET)
+      console.log('Current CPU Usage Percentage: ', usedCPU/existingCPU)
 
       if ((usedCPU/existingCPU) < eosConfig.threshold) continue
 
       console.log('Available CPU is below threshhold of: ', eosConfig.threshold)
-      console.log('Power Up Ammount: ', eosConfig.powerUpAmount + ' EOS')
-      console.log('Net_frac: ', eosConfig.net)
+      console.log('Power Up Amount: ', eosConfig.powerUpAmount + ' EOS')
+      console.log('NET_frac: ', eosConfig.net)
       console.log('CPU_frac: ', eosConfig.cpu)
 
       const transact = await eosUtil
