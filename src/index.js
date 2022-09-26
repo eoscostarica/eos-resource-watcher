@@ -31,7 +31,7 @@ async function init() {
       const usedNET = Number(accountStats.net_limit.used)
       console.log('Existing NET:', existingNET)
       console.log('Used NET:', usedNET)
-      console.log('Current CPU Usage Percentage: ', usedCPU/existingCPU)
+      console.log('Current CPU Usage Percentage: ', (usedCPU/existingCPU)*100, '%')
 
       if ((usedCPU/existingCPU) < eosConfig.threshold) continue
 
