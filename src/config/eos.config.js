@@ -6,5 +6,7 @@ module.exports = {
   pvtKey: process.env.EOS_PAYER_PRIVATE_KEY,
   watchAccount: process.env.EOS_WATCH_ACCOUNT,
   powerUpAmount: process.env.EOS_POWERUP_AMOUNT,
+  net: process.env.EOS_NET_FRAC,
+  cpu: process.env.EOS_CPU_FRAC,
   threshold: process.env.EOS_POWERUP_THRESHOLD
 }
